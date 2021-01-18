@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Update</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Mulish:wght@800&display=swap"
+        rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<script src="https://kit.fontawesome.com/e732d5d635.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container p-4 my-3 rounded-lg"
+        style="width: 35rem; background-color: #e4ca83; border: 4px solid black ">
+        <form id="search-form">
+            <div class="form-row mx-auto pb-2" style="width: 32rem;">
+                <div class="col-4">
+                    <input type="location" class="form-control" placeholder="Enter location" id="search-text-input">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-info">Search</button>
+                </div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-success" id="current-location">Current Location</button>
+                </div>
+            </div>
+        </form>
+        <div class="row" style="font-size: 14px; width: 30.5rem">
+            <div class="col-6 offset-7">
+                <span id="date-time"></span>
+            </div>
+        </div>
+        <div class="positioned">
+            <img src="cloud-solid.svg" />
+        </div>
+        <heading>
+            <div class="overlay">
+                <h1 style="font-family: 'Mulish', sans-serif" id="city">
+                    Lausanne
+                </h1>
+                <p id="temp-description">
+                    Mostly Cloudy
+                </p>
+                <div>
+                    <h2>
+                        <span class="temp" id="temp">16</span>
+                        <span class="units">
+                            <a href="#" id="celsius-link">°C</a> |<a href="#" id="fahrenheit-link"> °F</a></span>
+                    </h2>
+                </div>
+            </div>
+        </heading>
+        <div class="card text-center mx-auto my-2" class="card" style="width: 28rem; border: 3px solid white;">
+            <span class="badge badge-dark">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
+                        <div class="col-3">
+                            SUN
+                        </div>
+                        <div class="col-3">
+                            20/12/2020
+                        </div>
+                        <div class="col-3">
+                            🌧
+                        </div>
+                        <div class="col-3">
+                            7°C️
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </div>
+        <div class="card text-center mx-auto my-2" class="card" style="width: 28rem; border: 3px solid white;">
+            <span class="badge badge-dark">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
+                        <div class="col-3">
+                            MON
+                        </div>
+                        <div class="col-3">
+                            21/12/2020
+                        </div>
+                        <div class="col-3">
+                            🌧
+                        </div>
+                        <div class="col-3">
+                            8°C️
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </div>
+        <div class="card text-center mx-auto my-2" class="card" style="width: 28rem; border: 3px solid white;">
+            <span class="badge badge-dark">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
+                        <div class="col-3">
+                            TUE
+                        </div>
+                        <div class="col-3">
+                            22/12/2020
+                        </div>
+                        <div class="col-3">
+                            ☁️
+                        </div>
+                        <div class="col-3">
+                            11°C️
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </div>
+        <div class="card text-center mx-auto my-2" class="card" style="width: 28rem; border: 3px solid white;">
+            <span class="badge badge-dark">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
+                        <div class="col-3">
+                            WED
+                        </div>
+                        <div class="col-3">
+                            23/12/2020
+                        </div>
+                        <div class="col-3">
+                            🌧
+                        </div>
+                        <div class="col-3">
+                            12°C️
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </div>
+        <div class="card text-center mx-auto my-2" class="card" style="width: 28rem; border: 3px solid white;">
+            <span class="badge badge-dark">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
+                        <div class="col-3">
+                            THU
+                        </div>
+                        <div class="col-3">
+                            24/12/2020
+                        </div>
+                        <div class="col-3">
+                            🌧
+                        </div>
+                        <div class="col-3">
+                            8°C️
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <script src="code.js"></script>
+</body>
+
+</html>
