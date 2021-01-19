@@ -146,7 +146,8 @@ function currentLocation(position) {
   axios.get(apiUrl).then(showTemperature);
 }
 
-function getCurrentPosition() {
+function getCurrentPosition(event) {
+  event.preventDefault();
   navigator.getlocation.getCurrentPosition(currentLocation);
 }
 let button = document.querySelector("#current-location");
