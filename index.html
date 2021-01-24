@@ -16,11 +16,12 @@
 </head>
 
 <body>
-    <div class="container p-4 my-3 rounded-lg"
-        style="width: 35rem; background-color: #e4ca83; border: 4px solid black ">
+<div class="container my-3 rounded-lg" style="background-color: #e4ca83; border: 4px solid black; padding: 30px 40px; ">
+<div class="row">
+    <div class="col-6">
         <form id="search-form">
-            <div class="form-row mx-auto pb-2" style="width: 32rem;">
-                <div class="col-4">
+            <div class="form-row">
+                <div class="col-5">
                     <input type="location" class="form-control" placeholder="Enter location" id="search-text-input">
                 </div>
                 <div class="col">
@@ -31,16 +32,26 @@
                 </div>
             </div>
         </form>
-        <div class="row" style="font-size: 14px; width: 30.5rem">
-            <div class="col-6 offset-7">
+        <div class="row" style="font-size: 14px;">
+            <div class="col offset-6">
                 <span id="date-time"></span>
             </div>
         </div>
-        <div class="positioned">
-            <img src="cloud-solid.svg" />
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-4">
+                <div class="icon">
+                    <img 
+                    class="middle" 
+                    src="" 
+                    alt="Cloudy"
+                    id ="icon" />
+                </div>
+            </div>
+            <div class="col"></div>
         </div>
         <heading>
-            <div class="overlay">
+            <div class="heading">
                 <h1 style="font-family: 'Mulish', sans-serif" id="city">
                     Lausanne
                 </h1>
@@ -51,12 +62,14 @@
                     <h2>
                         <span class="temp" id="temp">16</span>
                         <span class="units">
-                            <a href="#" id="celsius-link">°C</a> |<a href="#" id="fahrenheit-link"> °F</a></span>
+                            <a href="#" id="cel-link">°C</a> |<a href="#" id="fah-link"> °F</a></span>
                     </h2>
                 </div>
             </div>
         </heading>
-        <div class="card text-center mx-auto my-2" class="card" style="width: 28rem; border: 3px solid white;">
+    </div>
+    <div class="col-6">
+        <div class="card my-2" style="border: 3px solid white;">
             <span class="badge badge-dark">
                 <div class="card-body">
                     <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
@@ -76,7 +89,7 @@
                 </div>
             </span>
         </div>
-        <div class="card text-center mx-auto my-2" class="card" style="width: 28rem; border: 3px solid white;">
+        <div class="card my-2" style="border: 3px solid white;">
             <span class="badge badge-dark">
                 <div class="card-body">
                     <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
@@ -96,7 +109,7 @@
                 </div>
             </span>
         </div>
-        <div class="card text-center mx-auto my-2" class="card" style="width: 28rem; border: 3px solid white;">
+        <div class="card my-2" style="border: 3px solid white;">
             <span class="badge badge-dark">
                 <div class="card-body">
                     <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
@@ -116,7 +129,7 @@
                 </div>
             </span>
         </div>
-        <div class="card text-center mx-auto my-2" class="card" style="width: 28rem; border: 3px solid white;">
+        <div class="card my-2" style="border: 3px solid white;">
             <span class="badge badge-dark">
                 <div class="card-body">
                     <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
@@ -136,7 +149,7 @@
                 </div>
             </span>
         </div>
-        <div class="card text-center mx-auto my-2" class="card" style="width: 28rem; border: 3px solid white;">
+        <div class="card my-2" style="border: 3px solid white;">
             <span class="badge badge-dark">
                 <div class="card-body">
                     <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
@@ -163,9 +176,11 @@
     </div>
     </div>
     </div>
-    <p style="margin: 0px 0px 20px 440px;">
+</div>
+    <p style="margin: 0px 0px 20px 400px;">
         <a href="https://github.com/tzahid0297/weather-app" target="_blank">Open-source code</a>, by Tania Zahid
-    </p> 
+    </p>
+</div> 
     <script src="code.js"></script>
 </body>
 

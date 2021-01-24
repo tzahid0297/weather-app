@@ -4,7 +4,9 @@
 // if (celTemperature > 10 && farTemperature > 50) {
 //   Math.ceil()
 
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+
   let months = [
     "January",
     "February",
@@ -30,14 +32,28 @@ function formatDate(date) {
     "Saturday"
   ];
 
-  let currentDate = date.getDate();
-  let currentDay = days[date.getDay()];
-  let currentMonth = months[date.getMonth()];
-  let currentHour = date.getHours();
-  let currentYear = date.getFullYear();
-  let currentMinutes = date.getMinutes();
-  let formattedDate = `${currentDay}, ${currentDate} ${currentMonth} ${currentYear} - ${currentHour}:${currentMinutes}`;
+  let currentDate = timestamp.getDate();
+  let currentDay = days[timestamp.getDay()];
+  let currentMonth = months[timestamp.getMonth()];
+  // let currentHour = timestamp.getHours();
+  let currentYear = timestamp.getFullYear();
+  let currentMinutes = timestamp.getMinutes();
+  let formattedDate = `${currentDay}, ${currentDate} ${currentMonth} ${currentYear} - ${formatHours(timestamp)}`;
   return formattedDate;
+}
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
 }
 
 // let date = new Date();
@@ -60,21 +76,6 @@ function formatDate(date) {
 
 // let form = document.querySelector("#search-form");
 // form.addEventListener("submit", search);
-
-
-function celTemp(event) {
-  event.preventDefault();
-  let celTempInput = document.querySelector("#temp");
-  celTempInput.innerHTML = 18;
-}
-
-function fahTemp(event) {
-  event.preventDefault();
-  let farTempInput = document.querySelector("#temp");
-  farTempInput.innerHTML = 64;
-}
-
-
 
 // function showTemperature(response) {
 //   let temperature = Math.round(response.data.main.temp);
@@ -127,14 +128,21 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
+  console.log(response.data);
+  // let temperature = Math.round(response.data.main.temp);
   let city = response.data.name;
   let h1 = document.querySelector("h1");
   let tempElement = document.querySelector("#temp");
-  let tempDescription = document.querySelector("#temp-description");
+  let tempDescription = document.querySelector("#temp-description")
+  let iconImage = document.querySelector("#icon");
+
+  celTemp = response.data.main.temp;
+
   h1.innerHTML = city;
-  tempElement.innerHTML = `${temperature}`;
+  tempElement.innerHTML = Math.round(celTemp);
   tempDescription.innerHTML = response.data.weather[0].description;
+  iconImage.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconImage.setAttribute("alt", response.data.weather[0].icon); 
 }
 
 function currentLocation(position) {
@@ -152,3 +160,30 @@ function getCurrentPosition(event) {
 }
 let button = document.querySelector("#current-location");
 button.addEventListener("click", getCurrentPosition);
+
+// function celTemp(event) {
+//   event.preventDefault();
+//   let celTempInput = document.querySelector("#cel-link");
+//   celTempInput.innerHTML = 18;
+// }
+
+function fahTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp");
+  let fahrenheitTemp = (celTemp * 1.8) + 32;
+  tempElement.innerHTML = Math.ceil(fahrenheitTemp); 
+}
+
+// function celTemp(event) {
+//   event.preventDefault();
+//   let tempElement = document.querySelector("#temp");
+//   tempElement.innerHTML = Math.round(response.data.main.temp); 
+// }
+
+let celTemp = null;
+
+let fahTempInput = document.querySelector("#fah-link");
+fahTempInput.addEventListener("click", fahTemp);
+
+// let celTempInput = document.querySelector("#cel-link");
+// celTempInput.addEventListener("click", celTemp);

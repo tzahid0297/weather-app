@@ -1,22 +1,9 @@
-.positioned {
-  position: absolute;
-  width: 24rem;
-  height: 15em;
-  /* z-index: 1; */
-  display: block;
-  top: 0;
-  bottom: 22rem;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.overlay {
+.heading {
   position: relative;
-  z-index: 2;
+  /* z-index: 2; */
   text-align: center;
-  color: white;
-  margin: 75px auto 43px auto;
+  /* color: white; */
+  margin: 45px auto 45px auto;
 }
 
 .units {
@@ -41,4 +28,15 @@
 
 #city {
   text-transform: capitalize;
+}
+
+.icon {
+  /* background-size: 800rem; */
+  width: 800px;
+  height: 800px;
+  /* display: block; */
+  margin: 10px auto;
+  position: absolute;
+  /* resize: initial; */
+  /* top: 120px; */
 }
