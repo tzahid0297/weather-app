@@ -2,8 +2,9 @@
   position: relative;
   /* z-index: 2; */
   text-align: center;
-  /* color: white; */
-  margin: 45px auto 45px auto;
+  /* color: blue; */
+  margin: 90px auto 45px auto;
+  background-color: lightskyblue;
 }
 
 .units {
@@ -30,13 +31,12 @@
   text-transform: capitalize;
 }
 
-.icon {
-  /* background-size: 800rem; */
-  width: 800px;
-  height: 800px;
-  /* display: block; */
-  margin: 10px auto;
+.icon img {
+  /* width: 100%; */
   position: absolute;
-  /* resize: initial; */
-  /* top: 120px; */
+  bottom: 65%;
+  left: 40%;
+  /* top: -50%; */
+  /* left: -25%; */
+  /* opacity: 0.3; */
 }

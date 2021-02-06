@@ -2,186 +2,137 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Update</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Mulish:wght@800&display=swap"
-        rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
-</head>
-<script src="https://kit.fontawesome.com/e732d5d635.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/e732d5d635.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
-<div class="container my-3 rounded-lg" style="background-color: #e4ca83; border: 4px solid black; padding: 30px 40px; ">
-<div class="row">
-    <div class="col-6">
-        <form id="search-form">
-            <div class="form-row">
-                <div class="col-5">
-                    <input type="location" class="form-control" placeholder="Enter location" id="search-text-input">
-                </div>
-                <div class="col">
-                    <button type="submit" class="btn btn-info">Search</button>
-                </div>
-                <div class="col-4">
-                    <button type="submit" class="btn btn-success" id="current-location">Current Location</button>
-                </div>
-            </div>
-        </form>
-        <div class="row" style="font-size: 14px;">
-            <div class="col offset-6">
-                <span id="date-time"></span>
-            </div>
-        </div>
+    <div class="container my-3 rounded-lg" style="
+        background-color: #e4ca83;
+        border: 4px solid black;
+        padding: 30px 40px;
+      ">
         <div class="row">
-            <div class="col"></div>
-            <div class="col-4">
-                <div class="icon">
-                    <img 
-                    class="middle" 
-                    src="" 
-                    alt="Cloudy"
-                    id ="icon" />
+            <div class="col-6">
+                <form id="search-form">
+                    <div class="form-row">
+                        <div class="col-5">
+                            <input type="location" class="form-control" placeholder="Enter location"
+                                id="search-text-input" />
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-info">Search</button>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-success" id="current-location">
+                                Current Location
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row" style="font-size: 14px">
+                    <div class="col offset-6">
+                        <span id="date-time"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="icon">
+                            <img class="middle" src="" alt="Cloudy" id="icon" />
+                        </div>
+                        <div class="heading">
+                            <h1 style="font-family: 'Mulish', sans-serif" id="city">
+                                Lausanne
+                            </h1>
+                            <p id="temp-description">Mostly Cloudy</p>
+                            <div>
+                                <h2>
+                                    <span class="temp" id="temp">16</span>
+                                    <span class="units">
+                                        <a href="#" id="cel-link">°C</a> |<a href="#" id="fah-link">
+                                            °F</a>
+                                    </span>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col"></div>
-        </div>
-        <heading>
-            <div class="heading">
-                <h1 style="font-family: 'Mulish', sans-serif" id="city">
-                    Lausanne
-                </h1>
-                <p id="temp-description">
-                    Mostly Cloudy
-                </p>
-                <div>
-                    <h2>
-                        <span class="temp" id="temp">16</span>
-                        <span class="units">
-                            <a href="#" id="cel-link">°C</a> |<a href="#" id="fah-link"> °F</a></span>
-                    </h2>
+            <div class="col-6">
+                <div class="card my-2" style="border: 3px solid white">
+                    <span class="badge badge-dark">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center" class="row" style="font-size: 16px">
+                                <div class="col-3">SUN</div>
+                                <div class="col-3">20/12/2020</div>
+                                <div class="col-3">🌧</div>
+                                <div class="col-3">7°C️</div>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="card my-2" style="border: 3px solid white">
+                    <span class="badge badge-dark">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center" class="row" style="font-size: 16px">
+                                <div class="col-3">MON</div>
+                                <div class="col-3">21/12/2020</div>
+                                <div class="col-3">🌧</div>
+                                <div class="col-3">8°C️</div>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="card my-2" style="border: 3px solid white">
+                    <span class="badge badge-dark">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center" class="row" style="font-size: 16px">
+                                <div class="col-3">TUE</div>
+                                <div class="col-3">22/12/2020</div>
+                                <div class="col-3">☁️</div>
+                                <div class="col-3">11°C️</div>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="card my-2" style="border: 3px solid white">
+                    <span class="badge badge-dark">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center" class="row" style="font-size: 16px">
+                                <div class="col-3">WED</div>
+                                <div class="col-3">23/12/2020</div>
+                                <div class="col-3">🌧</div>
+                                <div class="col-3">12°C️</div>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="card my-2" style="border: 3px solid white">
+                    <span class="badge badge-dark">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center" class="row" style="font-size: 16px">
+                                <div class="col-3">THU</div>
+                                <div class="col-3">24/12/2020</div>
+                                <div class="col-3">🌧</div>
+                                <div class="col-3">8°C️</div>
+                            </div>
+                        </div>
+                    </span>
                 </div>
             </div>
-        </heading>
+        </div> 
     </div>
-    <div class="col-6">
-        <div class="card my-2" style="border: 3px solid white;">
-            <span class="badge badge-dark">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
-                        <div class="col-3">
-                            SUN
-                        </div>
-                        <div class="col-3">
-                            20/12/2020
-                        </div>
-                        <div class="col-3">
-                            🌧
-                        </div>
-                        <div class="col-3">
-                            7°C️
-                        </div>
-                    </div>
-                </div>
-            </span>
-        </div>
-        <div class="card my-2" style="border: 3px solid white;">
-            <span class="badge badge-dark">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
-                        <div class="col-3">
-                            MON
-                        </div>
-                        <div class="col-3">
-                            21/12/2020
-                        </div>
-                        <div class="col-3">
-                            🌧
-                        </div>
-                        <div class="col-3">
-                            8°C️
-                        </div>
-                    </div>
-                </div>
-            </span>
-        </div>
-        <div class="card my-2" style="border: 3px solid white;">
-            <span class="badge badge-dark">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
-                        <div class="col-3">
-                            TUE
-                        </div>
-                        <div class="col-3">
-                            22/12/2020
-                        </div>
-                        <div class="col-3">
-                            ☁️
-                        </div>
-                        <div class="col-3">
-                            11°C️
-                        </div>
-                    </div>
-                </div>
-            </span>
-        </div>
-        <div class="card my-2" style="border: 3px solid white;">
-            <span class="badge badge-dark">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
-                        <div class="col-3">
-                            WED
-                        </div>
-                        <div class="col-3">
-                            23/12/2020
-                        </div>
-                        <div class="col-3">
-                            🌧
-                        </div>
-                        <div class="col-3">
-                            12°C️
-                        </div>
-                    </div>
-                </div>
-            </span>
-        </div>
-        <div class="card my-2" style="border: 3px solid white;">
-            <span class="badge badge-dark">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center" class="row" style="font-size: 16px;">
-                        <div class="col-3">
-                            THU
-                        </div>
-                        <div class="col-3">
-                            24/12/2020
-                        </div>
-                        <div class="col-3">
-                            🌧
-                        </div>
-                        <div class="col-3">
-                            8°C️
-                        </div>
-                    </div>
-                </div>
-            </span>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-</div>
-    <p style="margin: 0px 0px 20px 400px;">
+    <p style="margin: 0px 0px 20px 400px">
         <a href="https://github.com/tzahid0297/weather-app" target="_blank">Open-source code</a>, by Tania Zahid
     </p>
-</div> 
     <script src="code.js"></script>
 </body>
-
 </html>
