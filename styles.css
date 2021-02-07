@@ -55,17 +55,16 @@ body {
 }
 
 .otherData {
-  /* font-weight: bold; */
   margin-bottom: 30px;
   text-align: center;
   font-size: medium;
 }
 
-#forecast {
+.forecast-weather {
   text-align: center;
 }
 
-.weather-forecast img {
+.forecast-weather img {
   display: block;
   margin: 0 auto;
 }
