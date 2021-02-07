@@ -1,9 +1,3 @@
-// let celTemperature = document.querySelector("#celsius-link");
-// let farTemperature = document.querySelector("#fahrenheit-link");
-
-// if (celTemperature > 10 && farTemperature > 50) {
-//   Math.ceil()
-
 function formatDate(timestamp) {
   let date = new Date(timestamp);
 
@@ -35,7 +29,6 @@ function formatDate(timestamp) {
   let currentDate = timestamp.getDate();
   let currentDay = days[timestamp.getDay()];
   let currentMonth = months[timestamp.getMonth()];
-  // let currentHour = timestamp.getHours();
   let currentYear = timestamp.getFullYear();
   let currentMinutes = timestamp.getMinutes();
   let formattedDate = `${currentDay}, ${currentDate} ${currentMonth} ${currentYear} - ${formatHours(timestamp)}`;
@@ -56,52 +49,20 @@ function formatHours(timestamp) {
   return `${hours}:${minutes}`;
 }
 
-// let date = new Date();
-// let todayDate = document.querySelector("#date-time");
-// todayDate.innerHTML = formatDate(date);
+function forecastHours(timestamp) {
+let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
+    return `${hours}:${minutes}`;
+}
 
-// function search(event) {
-//   event.preventDefault();
-//   let searchInput = document.querySelector("#search-text-input");
-
-//   let h1 = document.querySelector("h1");
-//   if (searchInput.value) {
-//     h1.innerHTML = `${searchInput.value}`;
-//   } else {
-//     h1.innerHMTL = null;
-//     alert("Enter a city please, unless you're an alien!");
-//   }
-// }
-
-// let form = document.querySelector("#search-form");
-// form.addEventListener("submit", search);
-
-// function showTemperature(response) {
-//   let temperature = Math.round(response.data.main.temp);
-//   let city = response.data.name;
-//   let tempElement = document.querySelector("#temp");
-//   let tempDescription = document.querySelector("#temp-description");
-//   tempElement.innerHTML = `${temperature}`;
-//   tempDescription.innerHTML = response.data.weather[0].description;
-// }
-
-// function currentLocation(position) {
-//  let apiKey = "7d58ce6949384336473200edea8ebd96";
-//  let units = "metric";
-//  let city = "Lausanne"; 
-//  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-
-//  axios.get(apiUrl).then(showTemperature);
-
-// }
-
-// function getCurrentPosition() {
-//  navigator.getlocation.getCurrentPosition(currentLocation);
-// }
-
-// let button = document.querySelector("#current-location");
-// button.addEventListener("click", currentLocation);
 
 let date = new Date();
 let todayDate = document.querySelector("#date-time");
@@ -118,22 +79,48 @@ function search(event) {
     alert("Enter a city please, unless you're an alien!");
   }
 }
+
+function showForecast(response) {
+    let forecastElement = document.querySelector("#forecast");
+    forecastElement.innerHTML = null;
+    let forecast = null;
+
+    for (let index = 0; index < 4; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+    <div class= "col-3">
+        <p> ${formatHours(forecast.dt * 1000)} </p> 
+        <img
+         src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+        />
+        <div class="forecast-temperature"> 
+           <p><strong>${Math.round(forecast.main.temp_max)}°</strong> 
+            ${Math.round(forecast.main.temp_min)}°</p>
+        </div>
+    </div>
+    `;
+  }
+}
+
 function searchCity(city) {
   let apiKey = "7d58ce6949384336473200edea8ebd96";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showForecast);
 }
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
 function showTemperature(response) {
   console.log(response.data);
-  // let temperature = Math.round(response.data.main.temp);
   let city = response.data.name;
   let h1 = document.querySelector("h1");
   let tempElement = document.querySelector("#temp");
   let tempDescription = document.querySelector("#temp-description")
+  let humidityInfo = document.querySelector("#humidity");
+  let windspeedElement = document.querySelector("#windspeed");
   let iconImage = document.querySelector("#icon");
 
   celTemp = response.data.main.temp;
@@ -141,6 +128,8 @@ function showTemperature(response) {
   h1.innerHTML = city;
   tempElement.innerHTML = Math.round(celTemp);
   tempDescription.innerHTML = response.data.weather[0].description;
+  humidityInfo.innerHTML = response.data.main.humidity;
+  windspeedElement.innerHTML = Math.round(response.data.wind.speed); 
   iconImage.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   iconImage.setAttribute("alt", response.data.weather[0].icon); 
 }
@@ -161,23 +150,25 @@ function getCurrentPosition(event) {
 let button = document.querySelector("#current-location");
 button.addEventListener("click", getCurrentPosition);
 
-// function celTemp(event) {
-//   event.preventDefault();
-//   let celTempInput = document.querySelector("#cel-link");
-//   celTempInput.innerHTML = 18;
-// }
 
 function fahTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp");
+
+//   celsiusLink.classList.remove("active");
+//   fahrenheitLink.classList.add("active");
   let fahrenheitTemp = (celTemp * 1.8) + 32;
   tempElement.innerHTML = Math.ceil(fahrenheitTemp); 
 }
 
+
 // function celTemp(event) {
 //   event.preventDefault();
+  
+//   celsiusLink.classList.add("active");
+//   fahrenheitLink.classList.remove("active");
 //   let tempElement = document.querySelector("#temp");
-//   tempElement.innerHTML = Math.round(response.data.main.temp); 
+//   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 // }
 
 let celTemp = null;
