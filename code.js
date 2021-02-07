@@ -139,42 +139,37 @@ function currentLocation(position) {
   let lon = position.coords.longitude;
   let apiKey = "7d58ce6949384336473200edea8ebd96";
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=q=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showForecast);
 }
 
 function getCurrentPosition(event) {
   event.preventDefault();
-  navigator.getlocation.getCurrentPosition(currentLocation);
+  navigator.geolocation.getCurrentPosition(currentLocation);
 }
 let button = document.querySelector("#current-location");
 button.addEventListener("click", getCurrentPosition);
 
-
 function fahTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp");
-
-//   celsiusLink.classList.remove("active");
-//   fahrenheitLink.classList.add("active");
-  let fahrenheitTemp = (celTemp * 1.8) + 32;
-  tempElement.innerHTML = Math.ceil(fahrenheitTemp); 
+  celTempInput.classList.remove("active");
+  fahTempInput.classList.add("active");
+  let fahrenheitTemp = celTemp * 1.8 + 32;
+  tempElement.innerHTML = Math.ceil(fahrenheitTemp);
 }
 
-
-// function celTemp(event) {
-//   event.preventDefault();
-  
-//   celsiusLink.classList.add("active");
-//   fahrenheitLink.classList.remove("active");
-//   let tempElement = document.querySelector("#temp");
-//   temperatureElement.innerHTML = Math.round(celsiusTemperature);
-// }
-
+function convertCelsius(event) {
+  event.preventDefault();
+  celTempInput.classList.add("active");
+  fahTempInput.classList.remove("active");
+  let tempElement = document.querySelector("#temp");
+  tempElement.innerHTML = Math.round(celTemp);
+}
 let celTemp = null;
-
 let fahTempInput = document.querySelector("#fah-link");
 fahTempInput.addEventListener("click", fahTemp);
-
-// let celTempInput = document.querySelector("#cel-link");
-// celTempInput.addEventListener("click", celTemp);
+let celTempInput = document.querySelector("#cel-link");
+celTempInput.addEventListener("click", convertCelsius);

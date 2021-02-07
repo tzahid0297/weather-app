@@ -19,7 +19,7 @@
         <div class="weather-wrapper">
             <div class="weatherapp">
                 <form id="search-form">
-                    <div class="form-row mx-auto pb-2" style="width: 30rem;">
+                    <div class="form-row mx-auto pb-2" style="width: 30rem">
                         <div class="col-5">
                             <input type="location" class="form-control" placeholder="Enter location"
                                 id="search-text-input" autocomplete="off" />
@@ -44,24 +44,31 @@
                         <div class="heading">
                             <h1 id="city"></h1>
                             <p id="temp-description"></p>
-                        <div>
-                        <h2>
-                            <span class="temp" id="temp"></span>
-                            <span class="units">
-                                <a href="#" id="cel-link">°C</a> |<a href="#" id="fah-link"> °F</a>
-                            </span>
-                        </h2>
+                            <div>
+                                <h2>
+                                    <span class="temp" id="temp"></span>
+                                    <span class="units">
+                                        <a href="#" id="cel-link">°C</a> |<a href="#" id="fah-link">
+                                            °F</a>
+                                    </span>
+                                </h2>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                        <!-- </div>
-        </div> -->
                 <div class="row">
                     <div class="col otherData">
-                        <p> <i class="fas fa-tint"></i> Humidity: <span id="humidity"> </span>% </p>
-                        <p> <i class="fas fa-wind"></i> Wind: <span id="windspeed"> </span>km/h </p>
+                        <p>
+                            <i class="fas fa-tint"></i> Humidity:
+                            <span id="humidity"> </span>%
+                        </p>
+                        <p>
+                            <i class="fas fa-wind"></i> Wind:
+                            <span id="windspeed"> </span>km/h
+                        </p>
                     </div>
                 </div>
-                <div class="row" id="forecast"> </div>
+                <div class="row" id="forecast"></div>
             </div>
             <small>
                 <a href="https://github.com/tzahid0297/weather-app" target="_blank">Open-source code</a>, by Tania Zahid
@@ -70,4 +77,5 @@
     </div>
     <script src="code.js"></script>
 </body>
+
 </html>
